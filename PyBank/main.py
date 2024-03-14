@@ -4,20 +4,46 @@ import os
 import csv
 
 #Set the path for the csv file
-csvpath = os.path.join("PyBank","Resources", "budget_data.csv")
+csvpath = os.path.join("PyBank/Resources/budget_data.csv")
 
-#csvpath = "Resources/budget_data.csv"
-
+#Open the CSV 
 with open(csvpath) as budgetdata:
-
-    budgetdatareader = csv.reader(budgetdata, delimiter=',')
-
-    print(budgetdatareader)
-
-    csv_header = next(budgetdatareader)
+    budgetreader = csv.reader(budgetdata, delimiter=',')
     
-    print(f"CSV Header: {csv_header}")
+    #Extract header
+    header = next(budgetreader)
+    
+    ProfitLosses = []
+    totalPL = 0
+    changes = []
+    change = 0
+    totalchanges=0
 
+       # Loop through data
+    for month in budgetreader:
+        ProfitLosses.append(int(month[1]))
+
+    for month in ProfitLosses:
+        totalPL += month
+
+    for month in range(1,len(ProfitLosses)):
+        change = ProfitLosses[month] - ProfitLosses[month-1]
+        changes.append(int(change))
+
+    for change in changes:
+        totalchanges += change
+    
+    averagechanges = totalchanges/len(changes)
+
+print(
+f"Financial Analysis\n\n\
+----------------------------\n\n\
+Total Months: {len(ProfitLosses)}\n\n\
+Total: $ {totalPL}\n\n\
+Average Change: $ {round(averagechanges,2)}\n\n\
+Greatest Increase in Profits: Aug-16 ($ {max(changes)})\n\n\
+Greatest Decrease in Profits: Feb-14 ($ {min(changes)})\n")
+    
 #Dim Total_Rows As Double
 #Dim Total_Months As Double
 #Dim Total As Double
