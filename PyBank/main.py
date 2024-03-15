@@ -3,7 +3,7 @@ import os
 import csv
 
 # Set the path for the csv file
-budgetpath = os.path.join("PyBank/Resources/budget_data.csv")
+budgetpath = os.path.join(".","PyBank","Resources", "budget_data.csv")
 
 # Open the CSV 
 with open(budgetpath,'r') as budgetdata:
@@ -43,22 +43,35 @@ with open(budgetpath,'r') as budgetdata:
     # Calculate the average of the changes
     averagechanges = totalchanges/len(changes)
 
-# Print the analysis header on Terminal
-print(f"Financial Analysis\n\n\----------------------------\n")
+# Analysis header
+Line_1 =(f"Financial Analysis\n\n----------------------------")
 
-# Print Total months          
-print(f"Total Months: {len(ProfitLosses)}\n")
+# Total months          
+Line_2 = (f"Total Months: {len(ProfitLosses)}")
 
-# Print Total Profits/Losses
-print(f"Total: $ {totalPL}\n")
+# Total Profits/Losses
+Line_3 = (f"Total: $ {totalPL}")
 
-# Print Average changes
-print(f"Average Change: $ {round(averagechanges,2)}\n")
+# Average changes
+Line_4 = (f"Average Change: $ {round(averagechanges,2)}")
 
-# Print Greatest Increase
-print(f"Greatest Increase in Profits: Aug-16 ($ {max(changes)})\n")
+# Greatest Increase and its month
+Line_5 = (f"Greatest Increase in Profits: {months[changes.index(max(changes))+1]} ($ {max(changes)})")
 
-# Print Greatest Decrease
-print(f"Greatest Decrease in Profits: Feb-14 ($ {min(changes)})\n")
+# Greatest Decrease and its month
+Line_6 = (f"Greatest Decrease in Profits: {months[changes.index(min(changes))+1]} ($ {min(changes)})")
 
-analysispath = os.path.join("PyBank/Analysis/Analysis.txt")
+# Concatenate summmary
+summary = (f"{Line_1}\n\n{Line_2}\n\n{Line_3}\n\n{Line_4}\n\n{Line_5}\n\n{Line_6}")
+
+# Print summary in Terminal
+print(summary)
+
+# Define path for text file
+analysispath = os.path.join(".","PyBank","Analysis", "budget_analysis.txt")
+
+# Create text file and open it on write mode
+with open(analysispath,'w') as analysisfile:
+    
+    #add information to the file
+    analysisfile.write(summary)
