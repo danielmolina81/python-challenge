@@ -43,32 +43,32 @@ with open(budgetpath,'r') as budgetdata:
     # Calculate the average of the changes
     averagechanges = totalchanges/len(changes)
 
-# Analysis header
-Line_1 =(f"Financial Analysis\n\n----------------------------")
+    # Analysis header
+    Line_1 =(f"Financial Analysis\n\n----------------------------")
 
-# Total months          
-Line_2 = (f"Total Months: {len(ProfitLosses)}")
+    # Total months          
+    Line_2 = (f"Total Months: {len(ProfitLosses)}")
 
-# Total Profits/Losses
-Line_3 = (f"Total: $ {totalPL}")
+    # Total Profits/Losses
+    Line_3 = (f"Total: $ {totalPL}")
 
-# Average changes
-Line_4 = (f"Average Change: $ {round(averagechanges,2)}")
+    # Average changes
+    Line_4 = (f"Average Change: $ {round(averagechanges,2)}")
 
-# Greatest Increase and its month
-Line_5 = (f"Greatest Increase in Profits: {months[changes.index(max(changes))+1]} ($ {max(changes)})")
+    # Greatest Increase and its month
+    Line_5 = (f"Greatest Increase in Profits: {months[changes.index(max(changes))+1]} ($ {max(changes)})")
 
-# Greatest Decrease and its month
-Line_6 = (f"Greatest Decrease in Profits: {months[changes.index(min(changes))+1]} ($ {min(changes)})")
+    # Greatest Decrease and its month
+    Line_6 = (f"Greatest Decrease in Profits: {months[changes.index(min(changes))+1]} ($ {min(changes)})")
 
-# Concatenate summmary
-summary = (f"{Line_1}\n\n{Line_2}\n\n{Line_3}\n\n{Line_4}\n\n{Line_5}\n\n{Line_6}")
+    # Concatenate summmary
+    summary = (f"{Line_1}\n\n{Line_2}\n\n{Line_3}\n\n{Line_4}\n\n{Line_5}\n\n{Line_6}")
 
-# Print summary in Terminal
-print(summary)
+    # Print summary in Terminal
+    print(summary)
 
 # Define path for text file
-analysispath = os.path.join(".","PyBank","Analysis", "budget_analysis.txt")
+analysispath = os.path.join(".","PyBank","Analysis", "Budget_analysis.txt")
 
 # Create text file and open it on write mode
 with open(analysispath,'w') as analysisfile:
