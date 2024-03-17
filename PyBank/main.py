@@ -5,7 +5,7 @@ import csv
 # Set the path for the csv file
 budgetpath = os.path.join(".","PyBank","Resources", "budget_data.csv")
 
-# Open the CSV 
+# Open the csv file 
 with open(budgetpath,'r') as budgetdata:
     budgetreader = csv.reader(budgetdata)
     
@@ -18,7 +18,7 @@ with open(budgetpath,'r') as budgetdata:
     totalPL = 0
     changes = []
     change = 0
-    totalchanges=0
+    totalchanges = 0
 
     # Loop through data to obtain a list of profits and losses and a list of months
     for month in budgetreader:
@@ -73,5 +73,5 @@ analysispath = os.path.join(".","PyBank","Analysis", "Budget_analysis.txt")
 # Create text file and open it on write mode
 with open(analysispath,'w') as analysisfile:
     
-    #add information to the file
+    # Add information to the text file
     analysisfile.write(summary)
