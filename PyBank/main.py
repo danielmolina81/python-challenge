@@ -3,7 +3,7 @@ import os
 import csv
 
 # Set the path for the csv file
-budgetpath = os.path.join(".","PyBank","Resources", "budget_data.csv")
+budgetpath = os.path.join(".","PyBank","Resources","budget_data.csv")
 
 # Open the csv file 
 with open(budgetpath,'r') as budgetdata:
@@ -68,7 +68,7 @@ with open(budgetpath,'r') as budgetdata:
     print(summary)
 
 # Define path for text file
-analysispath = os.path.join(".","PyBank","Analysis", "Budget_analysis.txt")
+analysispath = os.path.join(".","PyBank","Analysis","Budget_analysis.txt")
 
 # Create text file and open it on write mode
 with open(analysispath,'w') as analysisfile:
