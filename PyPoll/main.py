@@ -2,8 +2,11 @@
 import os
 import csv
 
+# Define the directory where py file is located as a reference for the path
+folder = os.path.dirname(os.path.realpath(__file__))
+
 # Set the path for the csv file
-pollpath = os.path.join(".","PyPoll","Resources","election_data.csv")
+pollpath = os.path.join(folder,"Resources","election_data.csv")
 
 # Open the csv file 
 with open(pollpath, 'r') as polldata:
@@ -65,7 +68,7 @@ with open(pollpath, 'r') as polldata:
     print(summary)
 
 # Define path for text file
-analysispath = os.path.join(".","PyPoll","Analysis","Poll_analysis.txt")
+analysispath = os.path.join(folder,"Analysis","Poll_analysis.txt")
 
 # Create text file and open it on write mode
 with open(analysispath,'w') as analysisfile:
