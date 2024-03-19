@@ -2,7 +2,7 @@
 
 NOTE: main.py files must be run from the directory they are located
 
-For Py21Bank exercise, navigate all the way to the directory /pypoll and then execute the python file main.py
+For PyBank exercise, navigate all the way to the directory /pypoll and then execute the python file main.py
 
 For PyPoll exercise, navigate all the way to the directory /pypoll and then execute the python file main.py
 
