@@ -1,5 +1,9 @@
 # python-challenge
 
+NOTE: main.py files must be run from the directory they are located
+For PyBank exercise, navigate all the way to the directory /pypoll and then execute the python file main.py
+For PyPoll exercise, navigate all the way to the directory /pypoll and then execute the python file main.py
+
 Background
 
 It's time to put away the Excel sheet and enter the world of programming with Python. In this assignment, you'll use the concepts you've learned to complete two Python challenges, PyBank and PyPoll. Both tasks present a real-world situation where your newly developed Python scripting skills come in handy.
