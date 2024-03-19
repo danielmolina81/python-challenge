@@ -3,6 +3,8 @@
 Background
 
 It's time to put away the Excel sheet and enter the world of programming with Python. In this assignment, you'll use the concepts you've learned to complete two Python challenges, PyBank and PyPoll. Both tasks present a real-world situation where your newly developed Python scripting skills come in handy.
+
+
 Before You Begin
 
 Before starting the assignment, be sure to complete the following steps:
@@ -23,11 +25,11 @@ Before starting the assignment, be sure to complete the following steps:
 
     Push these changes to GitHub or GitLab.
 
+
 Files
 
-Download the following files to help you get started:
+Download the Module 3 Challenge files to help you get started:
 
-Module 3 Challenge files
 
 PyBank Instructions
 
@@ -65,6 +67,7 @@ You will be given a set of poll data called election_data.csv. The dataset is co
     The winner of the election based on popular vote
 
 In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+
 
 Hints and Considerations
 
