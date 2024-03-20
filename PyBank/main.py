@@ -2,13 +2,46 @@
 import os
 import csv
 
-# Set the path for the csv file
-budgetpath = os.path.join(".","Resources","budget_data.csv")
+# Define variables for path definition
+pathquestion = ""
+directory = ""
+
+# Loop to ask for current directory to define path
+while pathquestion != "A" and pathquestion != "B":
+    
+    # Ask user their current location
+    print("What directory are you executing main.py from?\n\
+A. /../python-challenge\n\
+B. /../python-challenge/PyBank\n\
+Please enter A or B")
+    
+    # User to input option about their current directory
+    pathquestion = input()
+    
+    # If statement to define directory
+    if pathquestion == "A":
+        directory = "PyBank"
+    elif pathquestion == "B":
+        directory = ""
+    else:
+        print ("Option not avaliable, please enter A or B")
+
+# Set the path for the csv file based on the answer
+budgetpath = os.path.join(directory,"Resources","Budget_data.csv")
+
+# Try to open the csv file and if error, indicate the choice was wrong and exit 
+try:
+    with open(budgetpath,'r') as budgetdata:
+        budgetreader = csv.reader(budgetdata)
+except:
+    print("You chose the wrong option,\n\
+please execute main.py again and select the right option")
+    exit()
 
 # Open the csv file 
 with open(budgetpath,'r') as budgetdata:
     budgetreader = csv.reader(budgetdata)
-    
+
     # Extract header
     header = next(budgetreader)
     
@@ -43,32 +76,32 @@ with open(budgetpath,'r') as budgetdata:
     # Calculate the average of the changes
     averagechanges = totalchanges/len(changes)
 
-    # Analysis header
-    Line_1 =(f"Financial Analysis\n\n----------------------------")
+# Analysis header
+Line_1 =(f"Financial Analysis\n\n----------------------------")
 
-    # Total months          
-    Line_2 = (f"Total Months: {len(ProfitLosses)}")
+# Total months          
+Line_2 = (f"Total Months: {len(ProfitLosses)}")
 
-    # Total Profits/Losses
-    Line_3 = (f"Total: $ {totalPL}")
+# Total Profits/Losses
+Line_3 = (f"Total: $ {totalPL}")
 
-    # Average changes
-    Line_4 = (f"Average Change: $ {round(averagechanges,2)}")
+# Average changes
+Line_4 = (f"Average Change: $ {round(averagechanges,2)}")
 
-    # Greatest Increase and its month
-    Line_5 = (f"Greatest Increase in Profits: {months[changes.index(max(changes))+1]} ($ {max(changes)})")
+# Greatest Increase and its month
+Line_5 = (f"Greatest Increase in Profits: {months[changes.index(max(changes))+1]} ($ {max(changes)})")
 
-    # Greatest Decrease and its month
-    Line_6 = (f"Greatest Decrease in Profits: {months[changes.index(min(changes))+1]} ($ {min(changes)})")
+# Greatest Decrease and its month
+Line_6 = (f"Greatest Decrease in Profits: {months[changes.index(min(changes))+1]} ($ {min(changes)})")
 
-    # Concatenate summmary
-    summary = (f"{Line_1}\n\n{Line_2}\n\n{Line_3}\n\n{Line_4}\n\n{Line_5}\n\n{Line_6}")
+# Concatenate summmary
+summary = (f"{Line_1}\n\n{Line_2}\n\n{Line_3}\n\n{Line_4}\n\n{Line_5}\n\n{Line_6}")
 
-    # Print summary in Terminal
-    print(summary)
+# Print summary in Terminal
+print(summary)
 
 # Define path for text file
-analysispath = os.path.join(".","Analysis","Budget_analysis.txt")
+analysispath = os.path.join(directory,"Analysis","Budget_analysis.txt")
 
 # Create text file and open it on write mode
 with open(analysispath,'w') as analysisfile:

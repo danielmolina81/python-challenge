@@ -2,10 +2,43 @@
 import os
 import csv
 
-# Set the path for the csv file
-pollpath = os.path.join(".","Resources","election_data.csv")
+# Define variables for path definition
+pathquestion = ""
+directory = ""
 
-# Open the csv file 
+# Loop to ask for current directory to define path
+while pathquestion != "A" and pathquestion != "B":
+    
+    # Ask user their current location
+    print("What directory are you executing main.py from?\n\
+A. /../python-challenge\n\
+B. /../python-challenge/PyPoll\n\
+Please enter A or B")
+    
+    # User to input option about their current directory
+    pathquestion = input()
+    
+    # If statement to define directory
+    if pathquestion == "A":
+        directory = "PyPoll"
+    elif pathquestion == "B":
+        directory = ""
+    else:
+        print ("Option not avaliable, please enter A or B")
+
+# Set the path for the csv file based on the answer
+pollpath = os.path.join(directory,"Resources","election_data.csv")
+
+# Try to open the csv file and if error, indicate the choice was wrong and exit 
+try:
+    with open(pollpath,'r') as polldata:
+        pollreader = csv.reader(polldata)
+except:
+    print("You chose the wrong option,\n\
+please execute main.py again and select the right option")
+    exit()
+
+# If right, open the csv file 
 with open(pollpath, 'r') as polldata:
     pollreader = csv.reader(polldata)
     
@@ -39,36 +72,36 @@ with open(pollpath, 'r') as polldata:
         percentcandidate.append(round((countvotes/totalvotes)*100,3))
         countvotes = 0
 
-    # Analysis header
-    Line_1 = (f"Election Results")
+# Analysis header
+Line_1 = (f"Election Results")
 
-    # Total votes          
-    Line_2 = (f"Total Votes: {totalvotes}")
+# Total votes          
+Line_2 = (f"Total Votes: {totalvotes}")
 
-    # Loop to create a list with the results per candidate
-    for candidate in candidates:
-        results.append(f"{candidate}: {percentcandidate[candidates.index(candidate)]}% ({votescandidate[candidates.index(candidate)]})")
+# Loop to create a list with the results per candidate
+for candidate in candidates:
+    results.append(f"{candidate}: {percentcandidate[candidates.index(candidate)]}% ({votescandidate[candidates.index(candidate)]})")
 
-    # Result per candidate
-    Line_3='\n\n'.join(results)
+# Result per candidate
+Line_3='\n\n'.join(results)
 
-    # Winner
-    Line_4 = (f"Winner: {candidates[votescandidate.index(max(votescandidate))]}")
+# Winner
+Line_4 = (f"Winner: {candidates[votescandidate.index(max(votescandidate))]}")
 
-    # Line
-    Line_X = (f"----------------------------")
+# Line
+Line_X = (f"----------------------------")
 
-    # Concatenate summmary
-    summary = (f"{Line_1}\n\n{Line_X}\n\n{Line_2}\n\n{Line_X}\n\n{Line_3}\n\n{Line_X}\n\n{Line_4}\n\n{Line_X}")
+# Concatenate summmary
+summary = (f"{Line_1}\n\n{Line_X}\n\n{Line_2}\n\n{Line_X}\n\n{Line_3}\n\n{Line_X}\n\n{Line_4}\n\n{Line_X}")
 
-    # Print summary in Terminal
-    print(summary)
+# Print summary in Terminal
+print(summary)
 
 # Define path for text file
-analysispath = os.path.join(".","Analysis","Poll_analysis.txt")
+analysispath = os.path.join(directory,"Analysis","Poll_analysis.txt")
 
 # Create text file and open it on write mode
 with open(analysispath,'w') as analysisfile:
         
-        # Add information to the text file
-        analysisfile.write(summary)
+    # Add information to the text file
+    analysisfile.write(summary)
