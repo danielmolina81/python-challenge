@@ -2,24 +2,26 @@
 import os
 import csv
 
-# Define variables for path definition
-pathquestion = ""
+# Define variable for directory confirmation
+directoryquestion = ""
 
-# Loop to ask for current directory to define path
-while pathquestion != "Y" and pathquestion != "N":
+# Loop to ask for current directory confirmation
+while directoryquestion != "Y" and directoryquestion != "N":
     
     # Ask user if they are in the right directory
     print("Is your current directory /../python-challenge/PyPoll/?\n\
 Please answer Y or N.")
     
-    # User to input option about their current directory
-    pathquestion = input()
+    # User response
+    directoryquestion = input()
     
-    # If statement to define if the execution can continue
-    if pathquestion == "N":
+    # If answer is No, ask user to go to right directory and exit 
+    if directoryquestion == "N":
         print ("Please navigate to the directory /../python-challenge/PyPoll/ before executing main.py")
         exit()
-    elif pathquestion !="Y" and pathquestion !="N":
+    
+    # If answer is not a valid option, ask user to enter a valid option
+    elif directoryquestion !="Y" and directoryquestion !="N":
         print ("Option not avaliable, please enter Y or N")
 
 # Set the path for the csv file based on the answer
@@ -34,7 +36,7 @@ except:
 Please navigate to the directory /../python-challenge/PyPoll/ before executing main.py")
     exit()
 
-# If right, open the csv file 
+# If no error, open the csv file 
 with open(pollpath, 'r') as polldata:
     pollreader = csv.reader(polldata)
     

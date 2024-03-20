@@ -2,24 +2,26 @@
 import os
 import csv
 
-# Define variable for path confirmation
-pathquestion = ""
+# Define variable for directory confirmation
+directoryquestion = ""
 
-# Loop to ask for current directory to define path
-while pathquestion != "Y" and pathquestion != "N":
+# Loop to ask for current directory confirmation
+while directoryquestion != "Y" and directoryquestion != "N":
     
     # Ask user if they are in the right directory
     print("Is your current directory /../python-challenge/PyBank/?\n\
 Please answer Y or N.")
     
     # User response
-    pathquestion = input()
+    directoryquestion = input()
     
-    # If statement to define if the execution can continue
-    if pathquestion == "N":
+    # If answer is No, ask user to go to right directory and exit
+    if directoryquestion == "N":
         print ("Please navigate to the directory /../python-challenge/PyBank/ before executing main.py")
         exit()
-    elif pathquestion !="Y" and pathquestion !="N":
+    
+    # If answer is not a valid option, ask user to enter a valid option
+    elif directoryquestion !="Y" and directoryquestion !="N":
         print ("Option not avaliable, please enter Y or N")
 
 # Set the path for the csv file based on the answer
@@ -34,7 +36,7 @@ except:
 Please navigate to the directory /../python-challenge/PyBank/ before executing main.py")
     exit()
 
-# Open the csv file 
+# If no error, open the csv file
 with open(budgetpath,'r') as budgetdata:
     budgetreader = csv.reader(budgetdata)
 
