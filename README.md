@@ -4,7 +4,9 @@ Note about path:
 As the os.path.join function works based on the current directory where the user is executing the main.py file. I included a prompt that helps to make sure the user is located in the right directory when executing the main.py file.
 
 For PyBank: /../python-challenge/PyBank/
+
 For PyPoll: /../python-challenge/PyPoll/
+
 
 Background
 
