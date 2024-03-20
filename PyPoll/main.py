@@ -56,6 +56,7 @@ with open(pollpath, 'r') as polldata:
     for vote in pollreader:
         votes.append((vote[2]))
 
+    # Calculate total votes
     totalvotes = len(votes)
     
     # Extract the list of unique candidates in alphabetical order
