@@ -2,45 +2,36 @@
 import os
 import csv
 
-# Define variables for path definition
+# Define variable for path confirmation
 pathquestion = ""
-directory = ""
 
 # Loop to ask for current directory to define path
-while pathquestion != "A" and pathquestion != "B":
+while pathquestion != "Y" and pathquestion != "N":
     
-    # Ask user their current location
-    print("What directory are you executing main.py from?\n\
-A. /../python-challenge\n\
-B. /../python-challenge/PyBank\n\
-Please enter A or B\n\
-(If your current directory is none of these,\n\
-enter EXIT and navigate to either one of the locations\n\
-before executing main.py)")
+    # Ask user if they are in the right directory
+    print("Is your current directory /../python-challenge/PyBank/?\n\
+Please answer Y or N.")
     
-    # User to input option about their current directory
+    # User response
     pathquestion = input()
     
-    # If statement to define directory
-    if pathquestion == "A":
-        directory = "PyBank"
-    elif pathquestion == "B":
-        directory = ""
-    elif pathquestion == "EXIT":
+    # If statement to define if the execution can continue
+    if pathquestion == "N":
+        print ("Please navigate to the directory /../python-challenge/PyBank/ before executing main.py")
         exit()
-    else:
-        print ("Option not avaliable, please enter A, B or EXIT")
+    elif pathquestion !="Y" and pathquestion !="N":
+        print ("Option not avaliable, please enter Y or N")
 
 # Set the path for the csv file based on the answer
-budgetpath = os.path.join(directory,"Resources","Budget_data.csv")
+budgetpath = os.path.join(".","Resources","Budget_data.csv")
 
 # Try to open the csv file and if error, indicate the choice was wrong and exit 
 try:
     with open(budgetpath,'r') as budgetdata:
         budgetreader = csv.reader(budgetdata)
 except:
-    print("You chose the wrong option,\n\
-please execute main.py again and select the right option")
+    print("You are not at the right directory,\n\
+Please navigate to the directory /../python-challenge/PyBank/ before executing main.py")
     exit()
 
 # Open the csv file 
@@ -106,7 +97,7 @@ summary = (f"{Line_1}\n\n{Line_2}\n\n{Line_3}\n\n{Line_4}\n\n{Line_5}\n\n{Line_6
 print(summary)
 
 # Define path for text file
-analysispath = os.path.join(directory,"Analysis","Budget_analysis.txt")
+analysispath = os.path.join(".","Analysis","Budget_analysis.txt")
 
 # Create text file and open it on write mode
 with open(analysispath,'w') as analysisfile:
