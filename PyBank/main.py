@@ -13,7 +13,10 @@ while pathquestion != "A" and pathquestion != "B":
     print("What directory are you executing main.py from?\n\
 A. /../python-challenge\n\
 B. /../python-challenge/PyBank\n\
-Please enter A or B")
+Please enter A or B\n\
+(If your current directory is none of these,\n\
+enter EXIT and navigate to either one of the locations\n\
+before executing main.py)")
     
     # User to input option about their current directory
     pathquestion = input()
@@ -23,8 +26,10 @@ Please enter A or B")
         directory = "PyBank"
     elif pathquestion == "B":
         directory = ""
+    elif pathquestion == "EXIT":
+        exit()
     else:
-        print ("Option not avaliable, please enter A or B")
+        print ("Option not avaliable, please enter A, B or EXIT")
 
 # Set the path for the csv file based on the answer
 budgetpath = os.path.join(directory,"Resources","Budget_data.csv")
